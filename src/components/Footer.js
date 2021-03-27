@@ -4,7 +4,7 @@ import logo from "../assets/astralogo.png"
 const Footer = () => {
     return (
         <div className="bg-blue-900 text-gray-200">
-        <div className="w-10/12 md:w-9/12 mx-auto py-3 flex flex-col md:flex-row items-center justify-around mb-4">
+        <div className="w-10/12 md:w-9/12 mx-auto py-3 flex flex-col md:flex-row items-center justify-around mb-4 py-14">
     <ul className="text-center">
         <li className="mt-1 mb-2 sm:mt-2 sm:mb-3 md:mt-4 text-yellow-400"><h3>CONTACT</h3></li>
         <li><p>Astra Watches HQ</p></li>
