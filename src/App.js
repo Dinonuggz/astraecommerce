@@ -11,6 +11,7 @@ import About from "./components/About"
 function App() {
   const [showModal,setShowModal] = useState(false);
   const [cartItems, setCartItems] = useState([])
+  const [checkout,setCheckout] = useState("Checkout")
   const cartItemsHandler = (item) => {
     const exist = cartItems.find(x => x.id === item.id)
     if(exist) {
@@ -28,11 +29,19 @@ function App() {
       setCartItems(cartItems.map(x => x.id === item.id ? {...exist, qty: exist.qty -1} : x)) 
     }
   }
+  const checkOutHandler = () => {
+    setCheckout("Processing..")
+    setTimeout(() => {
+    setShowModal(!showModal)
+    setCheckout("Checkout")
+    setCartItems([])
+    },2000)
+}
   const products = data.products
   return (
     <div className="App">
      <NavBar setShowModal = {setShowModal} showModal = {showModal} cartItems={cartItems}/>
-     <Modal showModal={showModal} setShowModal = {setShowModal} cartItems={cartItems} cartItemsHandler={cartItemsHandler} cartRemoveHandler={cartRemoveHandler}/>
+     <Modal checkOutHandler ={checkOutHandler} checkout={checkout} showModal={showModal} setShowModal ={setShowModal} cartItems={cartItems} cartItemsHandler={cartItemsHandler} cartRemoveHandler={cartRemoveHandler}/>
      <Hero />
      <GiftSection />
      <Catalog products={products} cartItemsHandler = {cartItemsHandler}/>

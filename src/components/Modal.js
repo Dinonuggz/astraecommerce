@@ -22,10 +22,11 @@ const modal = {
         transitiion: { delay:0.5 }
     }
 }
-const Modal = ({ showModal, setShowModal, cartItems, cartItemsHandler, cartRemoveHandler }) => {
+const Modal = ({ showModal, cartItems, cartItemsHandler, cartRemoveHandler, checkOutHandler,checkout }) => {
     const itemsPrice = cartItems.reduce((a,c) => a + c.price * c.qty, 0 )
     const shippingPrice = itemsPrice > 20000 ? 0: 150
     const totalPrice = itemsPrice + shippingPrice
+
     return (
         <AnimatePresence exitBeforeEnter>
          {showModal && (
@@ -54,7 +55,7 @@ const Modal = ({ showModal, setShowModal, cartItems, cartItemsHandler, cartRemov
             <p className="text-xs opacity-60">Products {itemsPrice.toFixed(2)} SEK</p>
             <p className="text-xs opacity-60">Shipping {shippingPrice.toFixed(2)} SEK</p>
             <p className="font-bold">Total {totalPrice.toFixed(2)} SEK</p>
-            <button className="bg-blue-800 px-4 py-2 text-white mt-4 mb-2 inline w-11/12 md:w-8/12 lg:w-7/12" onClick={()=>setShowModal(!showModal)}>Check Out</button>
+            <button className="bg-blue-800 px-4 py-2 text-white mt-4 mb-2 inline w-11/12 md:w-8/12 lg:w-7/12" onClick={()=>checkOutHandler()}>{checkout}</button>
             <div className="text-4xl mb-4">
             <FontAwesomeIcon className="m-2" icon={faCcVisa} />
             <FontAwesomeIcon className="m-2" icon={faApplePay} />
